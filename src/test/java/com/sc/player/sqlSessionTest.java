@@ -14,8 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /*@ContextConfiguration("/root-context.xml")*/
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class sqlSessionTest {
-
-	@Autowired
+ 
+	@Autowired 
 	private SqlSession ss;
 	
 	@Test
