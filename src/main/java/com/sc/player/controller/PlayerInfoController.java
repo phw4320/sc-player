@@ -31,5 +31,7 @@ public class PlayerInfoController {
 			Model m) throws SQLException {
 		m.addAttribute("piList", pis.getPlayerInfo(sc));
 		return "playerinfo/list";
-	}
+	} 
+	
+	
 }

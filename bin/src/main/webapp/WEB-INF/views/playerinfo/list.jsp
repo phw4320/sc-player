@@ -83,7 +83,7 @@ var AjaxUtil = function(conf){
 	this.send = function(){
 		xhr.send();
 	}
-};
+} 
  window.addEventListener('load',function(){
 
 	var conf = {
