@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQL.SC_PLAYER">
+	<select id="selectPlayerInfo" resultType="sc">
+		select * from sc_player
+	</select>
+	
+	<select id="getPlayerInfo" resultType="sc">
+		select * from sc_player where scname like '%' || #{scname} || '%'
+	</select>
+
+	<insert id="insertPlayerInfo" parameterType="sc">
+		insert into sc_player(scnum, scname, sctimname, scbacknum, scposition, sccountry, scheight, scweight, scbirthdat, scbloodtype, scpropic, scdesc) 
+		values(seq_scnum.nextval, #{scname}, #{sctimname}, #{scbacknum}, #{scposition}, #{sccountry}, #{scheight}, #{scweight}, #{scbirthdat}, #{scbloodtype}, #{scpropic}, #{scdesc})
+	</insert>
+
+	<update id="updatePlayerInfo" parameterType="sc">
+		update sc_player 
+		<set>
+			<if test="liname!=null">sctimname=#{sctimname},</if>
+			<if test="lilevel!=null">scbacknum=#{scbacknum},</if>
+			<if test="lidesc!=null">scposition=#{scposition}, </if>
+			<if test="lidesc!=null">scheight=#{scheight}, </if>
+			<if test="lidesc!=null">scweight=#{scweight}, </if>
+			<if test="lidesc!=null">scpropic=#{scpropic}, </if>
+			<if test="lidesc!=null">scdesc=#{scdesc}, </if>
+		</set>
+		where scnum=#{scnum}
+	</update>
+
+	<delete id="deletePlayerInfo" parameterType="sc">
+		delete from sc_player
+		where scnum=#{scnum}
+	</delete>
+
+</mapper>
