@@ -57,8 +57,8 @@ public class PlayerInfo {
 	public String getSctimname() {
 		return sctimname;
 	}
-	public void setSctimnamel(String sctimnamel) {
-		this.sctimname = sctimnamel;
+	public void setSctimname(String sctimname) {
+		this.sctimname = sctimname;
 	}
 	public Integer getScbacknum() {
 		return scbacknum;

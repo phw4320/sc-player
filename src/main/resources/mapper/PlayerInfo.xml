@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="getPlayerInfo" resultType="sc">
-		select * from sc_player where scname like '%' || #{scname} || '%'
+		select * from sc_player where scnum = #{scnum}
 	</select>
 
 	<insert id="insertPlayerInfo" parameterType="sc">
@@ -19,13 +19,17 @@
 	<update id="updatePlayerInfo" parameterType="sc">
 		update sc_player 
 		<set>
-			<if test="liname!=null">sctimname=#{sctimname},</if>
-			<if test="lilevel!=null">scbacknum=#{scbacknum},</if>
-			<if test="lidesc!=null">scposition=#{scposition}, </if>
-			<if test="lidesc!=null">scheight=#{scheight}, </if>
-			<if test="lidesc!=null">scweight=#{scweight}, </if>
-			<if test="lidesc!=null">scpropic=#{scpropic}, </if>
-			<if test="lidesc!=null">scdesc=#{scdesc}, </if>
+			<if test="scname!=null">scname=#{scname},</if>
+			<if test="sctimname!=null">sctimname=#{sctimname},</if>
+			<if test="scbacknum!=null">scbacknum=#{scbacknum},</if>
+			<if test="scposition!=null">scposition=#{scposition}, </if>
+			<if test="sccountry!=null">sccountry=#{sccountry}, </if>
+			<if test="scheight!=null">scheight=#{scheight}, </if>
+			<if test="scweight!=null">scweight=#{scweight}, </if>
+			<if test="scbirthdat!=null">scbirthdat=#{scbirthdat}, </if>
+			<if test="scbloodtype!=null">scbloodtype=#{scbloodtype}, </if>
+			<if test="scpropic!=null">scpropic=#{scpropic}, </if>
+			<if test="scdesc!=null">scdesc=#{scdesc}, </if>
 		</set>
 		where scnum=#{scnum}
 	</update>

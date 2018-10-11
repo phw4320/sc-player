@@ -9,24 +9,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
+import com.sc.player.service.PlayerInfoService;
+import com.sc.player.vo.PlayerInfo;
+
 @Controller
 public class UploadController extends HttpServlet {
+	
+	
 	private static final long serialVersionUID = 1L;
 	private static final String UPLOAD_PATH = "C:\\jsp_study\\workspace\\sc-player\\src\\main\\resources";
 
+	@Autowired
+	private PlayerInfoService pis;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	@RequestMapping(value = "/playerinfo/upload", method = RequestMethod.POST)
-	public void fileUpload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value = "/playerinfo/upload", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer fileUpload(HttpServletRequest request, HttpServletResponse response, @ModelAttribute PlayerInfo sc) throws Exception {
+		System.out.println("vo값 : "+ sc);
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("multipart/form-data");
+		System.out.println(request.getContentType());
 		MultipartRequest multipartReq = (MultipartRequest) request;
 		MultipartFile multipartFile = multipartReq.getFile("multipartFile");
 
@@ -34,18 +51,24 @@ public class UploadController extends HttpServlet {
 		if (!isMulti) {
 			throw new ServletException("폼태그 확인요망");
 		}
-
+		
 		String uploadDir = UPLOAD_PATH + File.separator;
-
 		System.out.println(uploadDir);
 		try {
 			new File(uploadDir).mkdir();
 			String fName =  File.separator + "upload" + File.separator +System.currentTimeMillis() + multipartFile.getOriginalFilename();
+			System.out.println(fName);
+			sc.setScpropic(fName);
 			multipartFile.transferTo(new File(uploadDir + fName));
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}
-	}	
+		int a = pis.insertPlayerInfo(sc);
+		if (a==1) {
+			System.out.println("추가 성공");
+		}
+		return a;
+	}
 }
 /*
  * protected void doPost(HttpServletRequest request, HttpServletResponse
