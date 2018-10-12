@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/js/bootstrap.min.js" type="text/js" media="screen" />
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

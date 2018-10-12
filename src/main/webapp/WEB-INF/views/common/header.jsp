@@ -11,7 +11,7 @@
 </head>
 <body>
 <header class="jumbotron my-4">
-        <h1 class="display-3">Soccer Player Profile</h1>
+        <h1 class="display-4">Soccer Player Profile</h1>
         <h2 class="lead">리버풀 </h2>
         <p>새로운 팀의 선수 프로필을 확인하세요.</p>
         <a href="#" class="btn btn-primary btn-lg">다른 팀 선택</a>

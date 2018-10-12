@@ -27,7 +27,7 @@ public class UploadController extends HttpServlet {
 	
 	
 	private static final long serialVersionUID = 1L;
-	private static final String UPLOAD_PATH = "C:\\jsp_study\\workspace\\sc-player\\src\\main\\resources";
+	private static final String UPLOAD_PATH = "C:\\jsp_study\\workspace\\sc-player\\src\\main\\webapp\\resources";
 
 	@Autowired
 	private PlayerInfoService pis;

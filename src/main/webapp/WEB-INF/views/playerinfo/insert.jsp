@@ -19,7 +19,7 @@
 			 생일 : <input type="date" name="scbirthdat"> <br> 
 			 혈액형 : <select name="scbloodtype">
 				<option value="A">A</option>
-				<option value="B">B</option>
+				<option value="B">B</option>	
 				<option value="AB">AB</option>
 				<option value="O">O</option>
 			</select> <br> 

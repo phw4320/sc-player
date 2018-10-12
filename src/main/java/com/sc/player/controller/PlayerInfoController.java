@@ -36,7 +36,7 @@ public class PlayerInfoController {
 	
 	
 	@RequestMapping(value="/playerinfo/{scnum}",method=RequestMethod.GET)
-	public @ResponseBody List<PlayerInfo> getLevelInfo(@RequestBody PlayerInfo sc) throws SQLException {
+	public @ResponseBody List<PlayerInfo> getLevelInfo(@ModelAttribute PlayerInfo sc) throws SQLException {
 		return pis.getPlayerInfo(sc);
 	}
 		
