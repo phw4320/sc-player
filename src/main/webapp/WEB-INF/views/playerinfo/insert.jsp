@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/common/nav.jsp"%>
 </head>
+<style>
+
+</style>
 <body>
 <br><br><br>
 <h1 align="center">Insert Player</h1>
@@ -15,40 +18,40 @@
 		enctype="multipart/form-data">
 		<table class= "table tabla-hover table-bordered">
 			<tr>
-				<th>선수 이름 :</th>
-				<td><input type="text" name="scname"></td>
+				<th>선수 이름 </th>
+				<td><input type="text"  class="form-control" name="scname"></td>
 			</tr>
 			<tr>
-				<th>소속 팀 :</th>
-				<td><input type="text" name="sctimname"></td>
+				<th>소속 팀 </th>
+				<td><input type="text"  class="form-control" name="sctimname"></td>
 			</tr>
 			<tr>
-				<th>등 번호 :</th>
-				<td><input type="number" name="scbacknum"></td>
+				<th>등 번호 </th>
+				<td><input type="number"  class="form-control" name="scbacknum"></td>
 			</tr>
 			<tr>
-				<th>포지션 :</th>
-				<td><input type="text" name="scposition"></td>
+				<th>포지션 </th>
+				<td><input type="text"  class="form-control" name="scposition"></td>
 			</tr>
 			<tr>
-				<th>출신 국가 :</th>
-				<td><input type="text" name="sccountry"></td>
+				<th>출신 국가 </th>
+				<td><input type="text"  class="form-control" name="sccountry"></td>
 			</tr>
 			<tr>
-				<th>키 :</th>
-				<td><input type="number" name="scheight"></td>
+				<th>키 </th>
+				<td><input type="number"  class="form-control" name="scheight"></td>
 			</tr>
 			<tr>
-				<th>몸무게 :</th>
-				<td><input type="number" name="scweight"></td>
+				<th>몸무게 </th>
+				<td><input type="number"  class="form-control" name="scweight"></td>
 			</tr>
 			<tr>
-				<th>생일 :</th>
-				<td><input type="date" name="scbirthdat"></td>
+				<th>생일 </th>
+				<td><input type="date"  class="form-control" name="scbirthdat"></td>
 			</tr>
 			<tr>
-				<th>혈액형 :</th>
-				<td><select name="scbloodtype">
+				<th>혈액형 </th>
+				<td><select name="scbloodtype"  class="form-control">
 						<option value="A">A</option>
 						<option value="B">B</option>
 						<option value="AB">AB</option>
@@ -56,15 +59,15 @@
 				</select></td>
 			</tr>
 			<tr>
-				<th>프로필 사진 :</th>
-				<td><input type="file" name="multipartFile"></td>
+				<th>프로필 사진 </th>
+				<td><input type="file"  class="form-control" name="multipartFile"></td>
 			</tr>
 			<tr>
-				<th>비고 :</th>
-				<td><textarea name="scdesc"></textarea></td>
+				<th>비고</th>
+				<td><textarea name="scdesc"  class="form-control"></textarea></td>
 			</tr>
 			<tr align="center">			
-				<td colspan="2"><button onclick="a">파일 전송</button></td>
+				<td colspan="2"><button class="btn btn-secondary">파일 전송</button></td>
 			</tr>
 
 		</table>
