@@ -27,7 +27,7 @@ public class UploadController extends HttpServlet {
 	
 	
 	private static final long serialVersionUID = 1L;
-	private static final String UPLOAD_PATH = "C:\\jsp_study\\workspace\\sc-player\\src\\main\\resources";
+	private static final String UPLOAD_PATH = "C:\\jsp_study\\workspace\\sc-player\\src\\main\\webapp\\resources";
 
 	@Autowired
 	private PlayerInfoService pis;
@@ -56,7 +56,7 @@ public class UploadController extends HttpServlet {
 		System.out.println(uploadDir);
 		try {
 			new File(uploadDir).mkdir();
-			String fName =  File.separator + "upload" + File.separator +System.currentTimeMillis() + multipartFile.getOriginalFilename();
+			String fName =  "/upload/"+System.currentTimeMillis() + multipartFile.getOriginalFilename();
 			System.out.println(fName);
 			sc.setScpropic(fName);
 			multipartFile.transferTo(new File(uploadDir + fName));

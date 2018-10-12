@@ -134,7 +134,7 @@ var AjaxUtil = function(conf){
 					html += ' <div class="frontside">';
 					html += ' <div class="card">';
 					html += ' <div class="card-body text-center">';
-					html += '  <p><img class=" img-fluid" src="/resources'+sc.scpropic+'"></p>';
+					html += '  <p><img class=" img-fluid" src=/resources'+sc.scpropic+'"></p>';
 					html += '  <h4 class="card-title">'+sc.scname+'</h4>';
 					html += ' <p class="card-text">This is basic card with image on top, title, description and button.</p>';
 					html += ' <a href="" onclick="selectPlayer('+sc.scnum+')" class="btn btn-primary btn-sm"><i class="fa fa-plus">상세보기</i></a>';
@@ -201,6 +201,7 @@ $('.card canvas').each(function(index){
 </script>
 
 <body>
+<img src="/resources/upload/1539271071461앤드류 로버트슨.jpg">
 	<table border="1">
 		<thead>
 			<tr>
