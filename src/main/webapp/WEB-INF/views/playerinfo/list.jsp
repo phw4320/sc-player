@@ -103,7 +103,7 @@ var AjaxUtil = function(conf){
 			success : function(res){
 				contentType: "application/json; charset=UTF-8";
 				res = JSON.parse(res);
-				alert(res);
+				//alert(res);
 				var html = '';
 				
 			 /*    for(var sc of res){

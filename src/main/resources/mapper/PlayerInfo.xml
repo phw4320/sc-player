@@ -28,14 +28,14 @@
 			<if test="scweight!=null">scweight=#{scweight}, </if>
 			<if test="scbirthdat!=null">scbirthdat=#{scbirthdat}, </if>
 			<if test="scbloodtype!=null">scbloodtype=#{scbloodtype}, </if>
-			<if test="scpropic!=null">scpropic=#{scpropic}, </if>
+			
 			<if test="scdesc!=null">scdesc=#{scdesc}, </if>
 		</set>
 		where scnum=#{scnum}
 	</update>
 
 	<delete id="deletePlayerInfo" parameterType="sc">
-		delete from sc_player
+		delete from sc_player 
 		where scnum=#{scnum}
 	</delete>
 

@@ -105,6 +105,10 @@ window.addEventListener('load',function(){
 				html += '<tr>';
 				html += '<td colspan="3"> <textarea name="scdesc" style="width:100%;">'+sc.scdesc+'</textarea></td>';
 				html += '</tr>';
+				html += '<tr align="center">';
+				html += '<td colspan="3"><button type="button" class="btn btn-secondary" onclick="updatePlayerInfo(<%=request.getParameter("scnum")%>)">수정</button>&nbsp;&nbsp;';
+				html += '<button type="button" class="btn btn-secondary" onclick="deletePlayerInfo(<%=request.getParameter("scnum")%>)">삭제</button></td>';
+				html += '</tr>';
 				html += '</table>';
 				html += '</div>';
 				}
@@ -119,6 +123,89 @@ au.send();
 </script>
 <body>
 <div id="scBody"></div>
+<script>
+function updatePlayerInfo(scnum){
+	alert(scnum);
+	var scname = document.querySelector("input[name=scname]").value;
+	var sctimname = document.querySelector("input[name=sctimname]").value;
+	var scbacknum = document.querySelector("input[name=scbacknum]").value;
+	var scposition = document.querySelector("input[name=scposition]").value;
+	var sccountry = document.querySelector("input[name=sccountry]").value;
+	var scheight = document.querySelector("input[name=scheight]").value;
+	var scweight = document.querySelector("input[name=scweight]").value;
+	var scbirthdat = document.querySelector("input[name=scbirthdat]").value;
+	var scbloodtype = document.querySelector("input[name=scbloodtype]").value;
+	var scdesc = document.querySelector("textarea[name=scdesc]").value;
+ 
+
+	var xhr = new XMLHttpRequest();
+	var data = {
+			scname:scname,
+			sctimname:sctimname,
+			scbacknum:scbacknum,
+			scposition:scposition,
+			sccountry:sccountry,
+			scheight:scheight,
+			scweight:scweight,
+			scbirthdat:scbirthdat,
+			scbloodtype:scbloodtype,
+			scbloodtype:scbloodtype,
+			};
+	data = JSON.stringify(data)
+	/* var conf = {
+		url : '/levelInfo/' + linum,
+		methid : 'PUT',
+		data : data,
+		success : function(res){ 
+			alert(res);
+		}
+	} */
+	alert(data);
+	var url = "/playerinfo/"+scnum;
+	var method = "put";
+	
+	xhr.open(method,url);
+	if (method != 'GET') {
+		xhr.setRequestHeader("Content-type","application/json;charset=utf-8");
+	}
+		xhr.onreadystatechange = function(){
+		if(xhr.readyState==4){
+			if(xhr.status=="200"){
+				if(xhr.responseText=='1'){
+					alert("수정 성공!");
+					location.href='/url/playerinfo:list';
+				}
+			}		
+			else{
+				alert(xhr.status);
+				alert("수정 실패");
+			}
+		}
+	}
+	xhr.send(data); 
+
+}
+
+function deletePlayerInfo(scnum) {
+	var xhr = new XMLHttpRequest();
+	var url = "/playerinfo/" + scnum;
+	var method = "post";
+	xhr.open(method,url);
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4){
+			if(xhr.status=="200"){
+				if(xhr.responseText=='1'){
+					alert("삭제 성공!");
+					location.href='/url/playerinfo:list';
+				}
+			}else{
+				alert("삭제 실패");
+			}
+		}
+	}
+	xhr.send(); 
+}
+</script>
 </body>
 <%@ include file="/WEB-INF/views/common/foot.jsp"%>
 </html>
