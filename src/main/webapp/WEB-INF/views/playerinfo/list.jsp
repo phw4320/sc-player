@@ -10,13 +10,15 @@
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/js/bootstrap.min.js" type="text/js"
-	media="screen" />
-
 <script></script>
 </head>
+
+<style>
+img {
+	max-width: 100%;
+	width: 200px;
+}
+</style>
 <!-- <style>
 .container {
    align: center;
@@ -101,7 +103,7 @@ var AjaxUtil = function(conf){
 			success : function(res){
 				contentType: "application/json; charset=UTF-8";
 				res = JSON.parse(res);
-				alert(res);
+				//alert(res);
 				var html = '';
 				
 			 /*    for(var sc of res){
@@ -124,7 +126,7 @@ var AjaxUtil = function(conf){
 					 */
 			    	html += '<div id="team" class="pb-5">';
 					html += ' <div>';
-					html += ' <h5 class="section-title h1">SOCCER PLAYER PROFILE</h5>';
+					//html += ' <h5 class="section-title h1">SOCCER PLAYER PROFILE</h5>';
 					html += '  <div class="row">';
 
 					for(var sc of res){						 
@@ -134,10 +136,14 @@ var AjaxUtil = function(conf){
 					html += ' <div class="frontside">';
 					html += ' <div class="card">';
 					html += ' <div class="card-body text-center">';
+<<<<<<< HEAD
 					html += '  <p><img class=" img-fluid" src=/resources'+sc.scpropic+'"></p>';
+=======
+					html += '  <p><img class="img-circle" src="/resources'+sc.scpropic+'"></p>';
+>>>>>>> branch 'master' of https://github.com/phw4320/sc-player.git
 					html += '  <h4 class="card-title">'+sc.scname+'</h4>';
 					html += ' <p class="card-text">This is basic card with image on top, title, description and button.</p>';
-					html += ' <a href="" onclick="selectPlayer('+sc.scnum+')" class="btn btn-primary btn-sm"><i class="fa fa-plus">상세보기</i></a>';
+					html += ' <a href="/url/playerinfo:view?scnum='+sc.scnum+'" onclick="" class="btn btn-primary btn-sm"><i class="fa fa-plus">상세보기</i></a>';
 					html += '   </div>';
 					html += '  </div>';
 					html += '  </div>';
@@ -226,7 +232,7 @@ $('.card canvas').each(function(index){
 </table>
 
 <script>
-function selectPlayer(scnum) {
+/* function selectPlayer(scnum) {
 	
 	var xhr = new XMLHttpRequest();
 	var data = {
@@ -240,13 +246,13 @@ function selectPlayer(scnum) {
 	xhr.setRequestHeader("Content-type","application/json");
 	
 	xhr.onreadystatechange = function(){
-		if(xhr.readyState==4){	z
-			alert(xhr.responseText);
+		if(xhr.readyState==4){	
+			alert(xhr.status);
 			if(xhr.status=="200"){
-				
+				alert(xhr.responseText);
 				if(xhr.responseText!=null){
 					alert("성공!");
-					location.href='/levelinfo/list';
+					location.href='/playerinfo/list';
 				}
 			}else{
 				alert(xhr.status);
@@ -256,7 +262,7 @@ function selectPlayer(scnum) {
 	}
 	xhr.send(data); 
 }
- 
+  */
 </script>
 </body>
 <%@ include file="/WEB-INF/views/common/foot.jsp"%>
