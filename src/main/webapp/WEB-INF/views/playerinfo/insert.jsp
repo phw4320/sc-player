@@ -19,39 +19,39 @@
 		<table class= "table tabla-hover table-bordered">
 			<tr>
 				<th>선수 이름 </th>
-				<td><input type="text"  class="form-control" name="scname"></td>
+				<td><input type="text"  class="form-control" name="scname"  maxlength="33" required></td>
 			</tr>
 			<tr>
 				<th>소속 팀 </th>
-				<td><input type="text"  class="form-control" name="sctimname"></td>
+				<td><input type="text"  class="form-control" name="sctimname"  maxlength="33" required></td>
 			</tr>
 			<tr>
 				<th>등 번호 </th>
-				<td><input type="number"  class="form-control" name="scbacknum"></td>
+				<td><input type="number"  class="form-control" name="scbacknum" max="99" maxlength="2" oninput="max(this)" required></td>
 			</tr>
 			<tr>
 				<th>포지션 </th>
-				<td><input type="text"  class="form-control" name="scposition"></td>
+				<td><input type="text"  class="form-control" name="scposition" maxlength="6" required></td>
 			</tr>
 			<tr>
 				<th>출신 국가 </th>
-				<td><input type="text"  class="form-control" name="sccountry"></td>
+				<td><input type="text"  class="form-control" name="sccountry" maxlength="18" required></td>
 			</tr>
 			<tr>
 				<th>키 </th>
-				<td><input type="number"  class="form-control" name="scheight"></td>
+				<td><input type="number"  class="form-control" name="scheight" maxlength="3" required ></td>
 			</tr>
 			<tr>
-				<th>몸무게 </th>
-				<td><input type="number"  class="form-control" name="scweight"></td>
+				<th>몸무게 </th>x
+				<td><input type="number"  class="form-control" name="scweight" maxlength="3" required></td>
 			</tr>
 			<tr>
 				<th>생일 </th>
-				<td><input type="date"  class="form-control" name="scbirthdat"></td>
+				<td><input type="date"  class="form-control" name="scbirthdat" required></td>
 			</tr>
 			<tr>
 				<th>혈액형 </th>
-				<td><select name="scbloodtype"  class="form-control">
+				<td><select name="scbloodtype"  class="form-control" required>
 						<option value="A">A</option>
 						<option value="B">B</option>
 						<option value="AB">AB</option>
@@ -60,11 +60,11 @@
 			</tr>
 			<tr>
 				<th>프로필 사진 </th>
-				<td><input type="file"  class="form-control" name="multipartFile"></td>
+				<td><input type="file" accept=".jpg,.png" class="form-control" name="multipartFile"></td>
 			</tr>
 			<tr>
 				<th>비고</th>
-				<td><textarea name="scdesc"  class="form-control"></textarea></td>
+				<td><textarea name="scdesc"  class="form-control" maxlength="666"></textarea></td>
 			</tr>
 			<tr align="center">			
 				<td colspan="2"><button class="btn btn-secondary">파일 전송</button></td>
@@ -74,7 +74,11 @@
 	</form>
 	</div>
 	<script>
-
+	function max(scbacknum) {
+		if(scbacknum.value.length > scbacknum.maxLength) {
+			scbacknum.value = scbacknum.value.slice(0, scbacknum.maxLength);
+		}
+	}
 		/* function insertPlayerInfo(){
 			
 			var lilevel = document.querySelector("input[name=lilevel]").value;

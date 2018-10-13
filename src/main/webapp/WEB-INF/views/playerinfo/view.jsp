@@ -59,7 +59,8 @@ window.addEventListener('load',function(){
 				var html = '';
 
 				for(var sc of res){				
-
+				html += '<input type="hidden" name="scpropic" value="'+sc.scpropic+'">';
+				
 				html += '<div class="container"><br><br><br>';
 				html += '<table class="table table-hover table-bordered">';
 				html += '<tr>';
@@ -110,6 +111,7 @@ window.addEventListener('load',function(){
 				html += '<button type="button" class="btn btn-secondary" onclick="deletePlayerInfo(<%=request.getParameter("scnum")%>)">삭제</button></td>';
 				html += '</tr>';
 				html += '</table>';
+				html += '<input type="file" name="scpropic2" value="'+sc.scpropic+'">';
 				html += '</div>';
 				}
 			document.querySelector('#scBody').insertAdjacentHTML('beforeend',html);
@@ -187,10 +189,17 @@ function updatePlayerInfo(scnum){
 }
 
 function deletePlayerInfo(scnum) {
+	var scpropic = document.querySelector("input[name=scpropic]").value;
+	alert (scpropic); 	
 	var xhr = new XMLHttpRequest();
 	var url = "/playerinfo/" + scnum;
-	var method = "post";
+	var data = {scpropic:scpropic};
+	data = JSON.stringify(data)
+	var method = "DELETE";
 	xhr.open(method,url);
+	if (method != 'GET') {
+		xhr.setRequestHeader("Content-type","application/json;charset=utf-8");
+	}
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState==4){
 			if(xhr.status=="200"){
@@ -203,7 +212,7 @@ function deletePlayerInfo(scnum) {
 			}
 		}
 	}
-	xhr.send(); 
+	xhr.send(data); 
 }
 </script>
 </body>

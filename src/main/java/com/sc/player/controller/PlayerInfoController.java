@@ -1,11 +1,11 @@
 package com.sc.player.controller;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +19,9 @@ import com.sc.player.vo.PlayerInfo;
 @Controller
 public class PlayerInfoController {
 
+	
+	private static final String UPLOAD_PATH = "C:\\jsp_study\\workspace\\sc-player\\src\\main\\webapp\\resources";
+	
 	@Autowired
 	private PlayerInfoService pis;
 
@@ -56,10 +59,16 @@ public class PlayerInfoController {
 		return pis.updatePlayerInfo(sc);
 	}
 
-	@RequestMapping(value = "/playerinfo/{scnum}", method = RequestMethod.POST)
+	@RequestMapping(value = "/playerinfo/{scnum}", method = RequestMethod.DELETE)
 	@ResponseBody
-	public Integer deleteLevelInfoList(
+	public Integer deleteLevelInfoList(@RequestBody PlayerInfo sc,
 			@PathVariable Integer scnum) throws SQLException {
+		String path = UPLOAD_PATH + sc.getScpropic();
+		System.out.println(path);
+		File file = new File(path);
+		if(file.exists() == true){
+			file.delete();
+		}
 		return pis.deletePlayerInfo(scnum);
 	}
 

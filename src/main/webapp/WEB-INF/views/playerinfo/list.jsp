@@ -136,13 +136,9 @@ var AjaxUtil = function(conf){
 					html += ' <div class="frontside">';
 					html += ' <div class="card">';
 					html += ' <div class="card-body text-center">';
-<<<<<<< HEAD
-					html += '  <p><img class=" img-fluid" src=/resources'+sc.scpropic+'"></p>';
-=======
 					html += '  <p><img class="img-circle" src="/resources'+sc.scpropic+'"></p>';
->>>>>>> branch 'master' of https://github.com/phw4320/sc-player.git
 					html += '  <h4 class="card-title">'+sc.scname+'</h4>';
-					html += ' <p class="card-text">This is basic card with image on top, title, description and button.</p>';
+					html += ' <p class="card-text"><b>'+sc.scdesc+'</b></p><br>';
 					html += ' <a href="/url/playerinfo:view?scnum='+sc.scnum+'" onclick="" class="btn btn-primary btn-sm"><i class="fa fa-plus">상세보기</i></a>';
 					html += '   </div>';
 					html += '  </div>';
@@ -207,7 +203,7 @@ $('.card canvas').each(function(index){
 </script>
 
 <body>
-<img src="/resources/upload/1539271071461앤드류 로버트슨.jpg">
+<!-- <img src="/resources/upload/1539271071461앤드류 로버트슨.jpg"> -->
 	<table border="1">
 		<thead>
 			<tr>

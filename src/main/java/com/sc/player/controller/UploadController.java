@@ -41,7 +41,7 @@ public class UploadController extends HttpServlet {
 	@ResponseBody
 	public String fileUpload(HttpServletRequest request, HttpServletResponse response, @ModelAttribute PlayerInfo sc) throws Exception {
 		System.out.println("vo값 : "+ sc);
-		request.setCharacterEncoding("utf-8");
+	 	request.setCharacterEncoding("utf-8");
 		response.setContentType("multipart/form-data");
 		System.out.println(request.getContentType());
 		MultipartRequest multipartReq = (MultipartRequest) request;
