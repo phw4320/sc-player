@@ -67,7 +67,7 @@
 				<td><textarea name="scdesc"  class="form-control" maxlength="666"></textarea></td>
 			</tr>
 			<tr align="center">			
-				<td colspan="2"><button class="btn btn-secondary">파일 전송</button></td>
+				<td colspan="2"><button class="btn btn-secondary" onclick="insertPlayerInfo()">확인</button></td>
 			</tr>
 
 		</table>
@@ -78,6 +78,43 @@
 		if(scbacknum.value.length > scbacknum.maxLength) {
 			scbacknum.value = scbacknum.value.slice(0, scbacknum.maxLength);
 		}
+	}
+	
+	function insertPlayerInfo(){
+
+		var xhr = new XMLHttpRequest();
+
+		/* var conf = {
+			url : '/levelInfo/' + linum,
+			methid : 'PUT',
+			data : data,
+			success : function(res){ 
+				alert(res);
+			}
+		} */
+
+		var url = "/playerinfo/upload";
+		var method = "post";
+		
+		xhr.open(method,url);
+		if (method != 'GET') {
+			xhr.setRequestHeader("Content-type","application/json;charset=utf-8");
+		}
+			xhr.onreadystatechange = function(){
+			if(xhr.readyState==4){
+				if(xhr.status=="200"){
+					if(xhr.responseText=='1'){
+						alert("추가 성공!");
+						location.href='/url/playerinfo:list';
+					}
+				}		
+				else{
+					alert(xhr.status);
+					alert("추가 실패");
+				}
+			}
+		}
+		xhr.send(); 
 	}
 		/* function insertPlayerInfo(){
 			
