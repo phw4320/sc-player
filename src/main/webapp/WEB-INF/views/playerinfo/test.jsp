@@ -13,6 +13,7 @@
 <body>
 <div class="container">
 <table class="table table-hover table-bordered">
+<div class="container-fluid">
 <tr>
 	<td rowspan="9">이미지</td>
 	<th>이름</th>
@@ -54,6 +55,12 @@
 	<td colspan="3"> 비고 </td>
 </tr>
 </table>
+</div>
+<div class="row">
+  <div class="col-md-4" style="border:1px">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+
+            
 </div>
 </body>
 </html>

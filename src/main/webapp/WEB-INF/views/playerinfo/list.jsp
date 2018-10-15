@@ -203,11 +203,12 @@ $('.card canvas').each(function(index){
 </script>
 
 <body>
+<div id="scBody"></div>
 <!-- <img src="/resources/upload/1539271071461앤드류 로버트슨.jpg"> -->
-	<table border="1">
+	<!-- <table border="1">
 		<thead>
 			<tr>
-				<!-- <th>번호</th>
+				 <th>번호</th>
 				<th>선수이름</th>
 				<th>소속 팀</th>
 				<th>등 번호</th>
@@ -219,13 +220,13 @@ $('.card canvas').each(function(index){
 				<th>혈액형</th>
 				<th>프로필 사진</th>
 				<th>비고</th>
-				<th>수정/삭제</th> -->
+				<th>수정/삭제</th> 
 
 </tr>
 </thead>
-<tbody id="scBody">
+<tbody >
 </tbody>
-</table>
+</table> -->
 
 <script>
 /* function selectPlayer(scnum) {
@@ -260,6 +261,7 @@ $('.card canvas').each(function(index){
 }
   */
 </script>
+
 </body>
 <%@ include file="/WEB-INF/views/common/foot.jsp"%>
 </html>
