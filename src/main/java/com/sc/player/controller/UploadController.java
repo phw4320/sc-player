@@ -24,53 +24,37 @@ import com.sc.player.vo.PlayerInfo;
 
 @Controller
 public class UploadController extends HttpServlet {
-	
-	
+
 	private static final long serialVersionUID = 1L;
 	private static final String UPLOAD_PATH = "C:\\jsp_study\\workspace\\sc-player\\src\\main\\webapp\\resources";
 
 	@Autowired
 	private PlayerInfoService pis;
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
-	@RequestMapping(value = "/playerinfo/upload", method=RequestMethod.POST)
-
-	public String fileUpload(HttpServletRequest request, HttpServletResponse response, @ModelAttribute PlayerInfo sc) throws Exception {
-
-		System.out.println("vo값 : "+ sc);
-	 	request.setCharacterEncoding("utf-8");
-		response.setContentType("multipart/form-data");
-		System.out.println(request.getContentType());
-		MultipartRequest multipartReq = (MultipartRequest) request;
-		MultipartFile multipartFile = multipartReq.getFile("multipartFile");
-
+	@RequestMapping(value = "/playerinfo/upload", method = RequestMethod.POST)
+	public String fileUpload(HttpServletRequest request, @ModelAttribute PlayerInfo sc) throws Exception {
+		request.setCharacterEncoding("utf-8");
 		boolean isMulti = ServletFileUpload.isMultipartContent(request);
 		if (!isMulti) {
 			throw new ServletException("폼태그 확인요망");
 		}
-		
+		MultipartRequest multipartReq = (MultipartRequest) request;
+		MultipartFile multipartFile = multipartReq.getFile("multipartFile");
 		String uploadDir = UPLOAD_PATH + File.separator;
 		System.out.println(uploadDir);
 		try {
 			new File(uploadDir).mkdir();
-			String fName =  "/upload/"+System.currentTimeMillis() + multipartFile.getOriginalFilename();
-			System.out.println(fName);
+			String fName = "/upload/" + System.currentTimeMillis() + multipartFile.getOriginalFilename();
 			sc.setScpropic(fName);
 			multipartFile.transferTo(new File(uploadDir + fName));
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}
 		int a = pis.insertPlayerInfo(sc);
-		if (a==1) {
+		if (a == 1) {
 			System.out.println("추가 성공");
 		}
-
 		return "playerinfo/list";
-
 	}
 }
 /*

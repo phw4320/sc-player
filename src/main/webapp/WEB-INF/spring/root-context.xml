@@ -22,10 +22,10 @@
 	</bean>
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize">
-			<value>10000000</value>
-		</property>
+		<property name="maxUploadSize" value="10000000"/>
+		 <property name="maxInMemorySize" value="100000000"/>
 	</bean>
+	
 	<bean id="hikariDataSource"
 		class="com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg ref="hikariConfig"></constructor-arg>

@@ -12,6 +12,7 @@
 </head>
 <body>
 <div class="container">
+<form>
 <table class="table table-hover table-bordered">
 <div class="container-fluid">
 <tr>

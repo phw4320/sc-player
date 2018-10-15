@@ -6,6 +6,7 @@
 <%@ include file="/WEB-INF/views/common/nav.jsp"%>
 
 <meta charset="UTF-8" />
+
 <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/js/bootstrap.min.js" type="text/js" media="screen" />
 
@@ -15,6 +16,14 @@ img {
 	max-width: 100%;
 	width: 400px;
 	text-align:center;
+}
+
+#th {
+	vertical-align:middle;
+	text-align:center; 
+	}
+img {
+	border-radius: 50%;
 }
 </style>
 <title>Insert title here</title>
@@ -55,56 +64,54 @@ window.addEventListener('load',function(){
 			success : function(res){
 				contentType: "application/json; charset=UTF-8";
 				res = JSON.parse(res);
-				alert(res);
 				var html = '';
 
 				for(var sc of res){				
 				html += '<input type="hidden" name="scpropic" value="'+sc.scpropic+'">';
-				
 				html += '<div class="container"><br><br><br>';
-				html += '<table class="table table-hover table-bordered">';
+				html += '<table class="table">';
 				html += '<tr>';
-				html += '<td rowspan="9" align="center"><img class=" img-fluid" src="/resources'+sc.scpropic+'"></td>';
-				html += '<th>선수 이름</th>';
-				html += '<td><input type="text" name="scname" value="'+sc.scname+'"></td>';
+				html += '<td id="th"rowspan="9" align="center"><img class=" img-circle" src="/resources'+sc.scpropic+'"></td>';
+				html += '<th id="th">선수 이름</th>';
+				html += '<td><input type="text" name="scname" class="form-control" value="'+sc.scname+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>소속 국가</th>';
-				html += '<td><input type="text" name="sccountry" value="'+sc.sccountry+'"></td>';
+				html += '<th id="th">소속 국가</th>';
+				html += '<td><input type="text" name="sccountry" class="form-control" value="'+sc.sccountry+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>소속 팀</th>';
-				html += '<td><input type="text" name="sctimname" value="'+sc.sctimname+'"></td>';
+				html += '<th id="th">소속 팀</th>';
+				html += '<td><input type="text" name="sctimname" class="form-control" value="'+sc.sctimname+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>등 번호</th>';
-				html += '<td><input type="text" name="scbacknum" value="'+sc.scbacknum+'"></td>';
+				html += '<th id="th">등 번호</th>';
+				html += '<td><input type="text" name="scbacknum" class="form-control" value="'+sc.scbacknum+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>포지션</th>';
-				html += '<td><input type="text" name="scposition" value="'+sc.scposition+'"></td>';
+				html += '<th id="th">포지션</th>';
+				html += '<td><input type="text" name="scposition" class="form-control" value="'+sc.scposition+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>키</th>';
-				html += '<td><input type="number" name="scheight" value="'+sc.scheight+'">cm</td>';
+				html += '<th id="th">키</th>';
+				html += '<td><input type="number" name="scheight" class="form-control" value="'+sc.scheight+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>몸무게</th>';
-				html += '<td><input type="number" name="scweight" value="'+sc.scweight+'">kg</td>';
+				html += '<th id="th">몸무게</th>';
+				html += '<td><input type="number" name="scweight" class="form-control" value="'+sc.scweight+'"></td>';
+				html += '</tr>';		
+				html += '<tr>';
+				html += '<th id="th">생년월일</th>';
+				html += '<td><input type="date" name="scbirthdat" class="form-control" value="'+sc.scbirthdat+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>생년월일</th>';
-				html += '<td><input type="date" name="scbirthdat" value="'+sc.scbirthdat+'"></td>';
+				html += '<th id="th">혈액형</th>';
+				html += '<td><input type="text" name="scbloodtype" class="form-control" value="'+sc.scbloodtype+'"></td>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th>혈액형</th>';
-				html += '<td><input type="text" name="scbloodtype" value="'+sc.scbloodtype+'">형</td>';
+				html += '<th id="th" colspan="3">비고</th>';
 				html += '</tr>';
 				html += '<tr>';
-				html += '<th colspan="3">비고</th>';
-				html += '</tr>';
-				html += '<tr>';
-				html += '<td colspan="3"> <textarea name="scdesc" style="width:100%;">'+sc.scdesc+'</textarea></td>';
+				html += '<td colspan="3"> <textarea name="scdesc" class="form-control" style="width:100%;">'+sc.scdesc+'</textarea></td>';
 				html += '</tr>';
 				html += '<tr align="center">';
 				html += '<td colspan="3"><button type="button" class="btn btn-secondary" onclick="updatePlayerInfo(<%=request.getParameter("scnum")%>)">수정</button>&nbsp;&nbsp;';
@@ -127,7 +134,6 @@ au.send();
 <div id="scBody"></div>
 <script>
 function updatePlayerInfo(scnum){
-	alert(scnum);
 	var scname = document.querySelector("input[name=scname]").value;
 	var sctimname = document.querySelector("input[name=sctimname]").value;
 	var scbacknum = document.querySelector("input[name=scbacknum]").value;
@@ -162,7 +168,7 @@ function updatePlayerInfo(scnum){
 			alert(res);
 		}
 	} */
-	alert(data);
+
 	var url = "/playerinfo/"+scnum;
 	var method = "put";
 	
@@ -189,8 +195,7 @@ function updatePlayerInfo(scnum){
 }
 
 function deletePlayerInfo(scnum) {
-	var scpropic = document.querySelector("input[name=scpropic]").value;
-	alert (scpropic); 	
+	var scpropic = document.querySelector("input[name=scpropic]").value;	
 	var xhr = new XMLHttpRequest();
 	var url = "/playerinfo/" + scnum;
 	var data = {scpropic:scpropic};
