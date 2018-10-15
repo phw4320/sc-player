@@ -150,7 +150,7 @@ function updatePlayerInfo(scnum){
 			scheight:scheight,
 			scweight:scweight,
 			scbirthdat:scbirthdat,
-			scbloodtype:scbloodtype,
+			scbloodtype:scbloodtype,	
 			scdesc:scdesc,
 			};
 	data = JSON.stringify(data)
