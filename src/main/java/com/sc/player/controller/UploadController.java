@@ -39,7 +39,8 @@ public class UploadController extends HttpServlet {
 
 	@RequestMapping(value = "/playerinfo/upload", method=RequestMethod.POST)
 
-	public Integer fileUpload(HttpServletRequest request, HttpServletResponse response, @ModelAttribute PlayerInfo sc) throws Exception {
+	public String fileUpload(HttpServletRequest request, HttpServletResponse response, @ModelAttribute PlayerInfo sc) throws Exception {
+
 		System.out.println("vo값 : "+ sc);
 	 	request.setCharacterEncoding("utf-8");
 		response.setContentType("multipart/form-data");
@@ -67,7 +68,9 @@ public class UploadController extends HttpServlet {
 		if (a==1) {
 			System.out.println("추가 성공");
 		}
-		return a;
+
+		return "playerinfo/list";
+
 	}
 }
 /*
