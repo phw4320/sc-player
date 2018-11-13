@@ -257,4 +257,8 @@
 		
 		
 	</dependencies>
+	
+	<build>
+	<finalName>scp</finalName>
+	</build>
 </project>
